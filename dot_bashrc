@@ -1,0 +1,26 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias ll='ls -la'
+alias cap='grim -g "$(slurp)" ~/screenshots/$(date +%s).png'
+# kubernetes aliases
+alias k='kubectl'
+alias kgp='kubectl get pods'
+alias kcs='kubectl config set-context --current --namespace=$1'
+PS1='[\u@\h \W]\$ '
+
+# añade la clave de github
+eval $(keychain --eval --quiet g25519)
+
+# Created by `pipx` on 2025-09-18 23:56:03
+export PATH="$PATH:/home/sito/.local/bin"
+# >> k3s command completion (start)
+. <(k3s completion bash)
+# >> k3s command completion (end)
+export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
