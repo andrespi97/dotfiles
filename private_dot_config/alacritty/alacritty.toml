@@ -1,0 +1,40 @@
+[general]
+import = [
+    "~/.config/alacritty/themes/test.toml"
+]
+# Archivo: ~/.config/alacritty/alacritty.toml
+# Usando JetBrainsMonoNL como fuente principal.
+
+[font]
+# Tamaño general de la fuente
+size = 14.0
+
+# Configuración de la fuente NORMAL
+[font.normal]
+family = "JetBrainsMonoNerdFont"
+style = "Regular"
+
+# Configuración para la NEGRITA (Bold)
+[font.bold]
+family = "JetBrainsMonoNerdFont"
+style = "Bold"
+
+# Configuración para la CURSIVA (Italic)
+[font.italic]
+family = "JetBrainsMonoNerdFont"
+style = "Italic"
+
+# Configuración para NEGRITA y CURSIVA a la vez
+[font.bold_italic]
+family = "JetBrainsMonoNerdFont"
+style = "Bold Italic"
+[font.offset]
+x = 0
+y = 1
+
+[font.glyph_offset]
+x = 0
+y = 2
+
+[window]
+opacity= 0.7
