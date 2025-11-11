@@ -1,7 +1,12 @@
 #
 # ~/.bashrc
 #
+{{ if eq .chezmoi.osRelease.name "Ubuntu" }}
+eval -- "$(/usr/local/bin/starship init bash --print-full-init)"
+{{ else }}
 eval -- "$(/usr/bin/starship init bash --print-full-init)"
+{{ end }}
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -20,8 +25,12 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519
 
 # Created by `pipx` on 2025-09-18 23:56:03
+{{ if eq .chezmoi.osRelease.name "Ubuntu" }}
 export PATH="$PATH:/home/sito/.local/bin"
+{{ end }}
+{{ if ne .chezmoi.osRelease.name "Ubuntu" }}
 # >> k3s command completion (start)
 . <(k3s completion bash)
 # >> k3s command completion (end)
 export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+{{ end }}
