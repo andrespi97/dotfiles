@@ -1,10 +1,9 @@
 #
 # ~/.bashrc
 #
-{{ if eq .chezmoi.osRelease.name "Ubuntu" }}
+{{ if and .chezmoi.osRelease (eq .chezmoi.osRelease.name "Arch Linux") }}
 eval -- "$(/usr/local/bin/starship init bash --print-full-init)"
-{{ else }}
-eval -- "$(/usr/bin/starship init bash --print-full-init)"
+alias cap='grim -g "$(slurp)" ~/screenshots/$(date +%s).png'
 {{ end }}
 
 # If not running interactively, don't do anything
@@ -13,22 +12,18 @@ eval -- "$(/usr/bin/starship init bash --print-full-init)"
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias ll='ls -la'
-alias cap='grim -g "$(slurp)" ~/screenshots/$(date +%s).png'
+
 # kubernetes aliases
 alias k='kubectl'
 alias kgp='kubectl get pods'
 alias kcs='kubectl config set-context --current --namespace=$1'
 PS1='[\u@\h \W]\$ '
 
-# añade la clave de github
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_ed25519
 
-# Created by `pipx` on 2025-09-18 23:56:03
-{{ if eq .chezmoi.osRelease.name "Ubuntu" }}
+{{ if and .chezmoi.osRelease (eq .chezmoi.osRelease.name "Ubuntu") }}
 export PATH="$PATH:/home/sito/.local/bin"
 {{ end }}
-{{ if ne .chezmoi.osRelease.name "Ubuntu" }}
+{{ if and .chezmoi.osRelease (ne .chezmoi.osRelease.name "Arch Linux") }}
 # >> k3s command completion (start)
 . <(k3s completion bash)
 # >> k3s command completion (end)
