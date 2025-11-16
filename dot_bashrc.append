@@ -1,5 +1,0 @@
-# Include local additions
-{{ if (exists "~/.bashrc.local") -}}
-source ~/.bashrc.local
-{{ end -}}
-
