@@ -1,0 +1,13 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/bin/bash
+set -e
+echo "[chezmoi] Instalando paquetes Linux..."
+sudo pacman -Syu --noconfirm
+
+{{- range .packages.linux.pacman }}
+sudo pacman -S --noconfirm {{ . | quote }}
+{{- end }}
+
+
+echo "[chezmoi] Paquetes Linux instalados..."
+{{- end }}
