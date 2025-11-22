@@ -2,7 +2,7 @@
 # ~/.bashrc
 #
 {{ if and .chezmoi.osRelease (eq .chezmoi.osRelease.name "Arch Linux") }}
-eval -- "$(/usr/local/bin/starship init bash --print-full-init)"
+eval -- "$(/usr/bin/starship init bash --print-full-init)"
 alias cap='grim -g "$(slurp)" ~/screenshots/$(date +%s).png'
 {{ end }}
 
